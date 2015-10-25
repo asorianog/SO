@@ -16,7 +16,7 @@ int main(){
         matriz[2][1]=8;
         matriz[2][2]=9;
 
-        apuntador = *(matriz+2);
+        apuntador = *(matriz+2); // Se controla el primer indice de la matriz
 
         ptr = &apuntador;
 	**ptr = matriz[0][0];

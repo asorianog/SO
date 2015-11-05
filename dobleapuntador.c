@@ -16,17 +16,27 @@ int main(){
         matriz[2][1]=8;
         matriz[2][2]=9;
 
-        apuntador = *(matriz+2); // Se controla el primer indice de la matriz
+        apuntador = *(matriz); // Se controla el primer indice de la matriz
 
         ptr = &apuntador;
-	**ptr = matriz[0][0];
+	
 
-        //printf("%p \n", &matriz);
-        //printf("%p \n", &(matriz+1)+2))
-
-
+        printf("%d \n", *(*(matriz)));  // = 1
+        printf("%d \n", *(*(matriz)+2));  // = 3
+        printf("%d \n", *(*(matriz+0)+2));  // = 3
         printf("%d \n", *(*(matriz+1)+2));  // = 6
-	printf("%d \n",*(*(ptr)));	    // = 1
-	printf("%d \n",*(*(ptr)+2));	    // = 9
+
+	printf("%d \n", *(*(ptr)));	    // = 1
+	printf("%d \n", *(*(ptr)+2));     // = 3
+        printf("%d \n", *(*(ptr+0)+2));     // = 3
+	//printf("%d \n", *(*(ptr+2)+1));	    // = 6
+
+	printf("%p \n", &matriz);
+	printf("%p \n", *(matriz)+1);
+	printf("%p \n", apuntador+1);
+	printf("%p \n", &apuntador+1);
+	printf("%p \n", *(ptr+1));
+	printf("%p \n", &ptr+1);
+	
 }
 

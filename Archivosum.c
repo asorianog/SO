@@ -19,10 +19,10 @@ int main(){
 	FILE *fl;
 	char str[10];
 
-	fl = fopen ("Prueba.txt", "w");
-	fprintf(fl, "%d", 100);
+	/*fl = fopen ("Prueba.txt", "w");
+	fprintf(fl, "%d\n", 100);
 	fclose(fl);
-
+*/
 	/*fl = fopen ("Prueba.txt", "r");
 	fgets (str, 60, fl);
 	puts(str);
@@ -41,17 +41,26 @@ int main(){
 	for(k = 0; k <= num; k++){
 	wait(&status);
 	}
+	
+	fl = fopen ("Prueba.txt", "r");
+	while (!feof(fl)) {
+     fgets(str, 10, fl);
+     if (!feof(fl))        
+        puts(str);
+        suma += atoi(str);
+        printf("%d\n", suma);  
+  }  
+	fclose(fl);
 	printf("Soy el padre %d con pid%d \n", pid,getpid());
 	exit(0);
-
 	}else{
+
 	for(j = ((pid-1)*10); j <= 9+((pid-1)*10); j++){
 	suma += arre[j];
 	}
 	fl = fopen ("Prueba.txt", "a+");
-	fprintf(fl, "%d", suma);
+	fprintf(fl, "%d\n", suma);
 	fclose(fl);
-
 	printf("Soy el hijo %d con pid%d y la suma: %d \n", pid,getpid(),suma);
 	exit(0);
 	}

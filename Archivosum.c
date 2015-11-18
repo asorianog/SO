@@ -19,18 +19,10 @@ int main(){
 	FILE *fl;
 	char str[10];
 
-	/*fl = fopen ("Prueba.txt", "w");
-	fprintf(fl, "%d\n", 100);
-	fclose(fl);
-*/
-	/*fl = fopen ("Prueba.txt", "r");
-	fgets (str, 60, fl);
-	puts(str);
-	fclose(fl);
-*/
-
 	printf("Numero de procesos \n");
 	scanf("%d",&num);
+	fl = fopen ("Prueba.txt", "w");
+	fclose(fl);
 	pid = procesos(num);
 
 	for(i = 0; i < 100; i++){
@@ -45,13 +37,14 @@ int main(){
 	fl = fopen ("Prueba.txt", "r");
 	while (!feof(fl)) {
      fgets(str, 10, fl);
-     if (!feof(fl))        
+     if (!feof(fl)){        
         puts(str);
         suma += atoi(str);
         printf("%d\n", suma);  
+    }
   }  
 	fclose(fl);
-	printf("Soy el padre %d con pid%d \n", pid,getpid());
+	printf("Soy el padre %d con pid%d la suma: %d \n", pid,getpid(), suma);
 	exit(0);
 	}else{
 

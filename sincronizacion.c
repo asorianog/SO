@@ -1,7 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<sys/types.h>
-#include<wait.h>
+//#include<wait.h>
+#include<sys/wait.h>
 
 int procesos(int nProc){
 	int i;

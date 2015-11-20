@@ -21,6 +21,11 @@ int main(){
 
 	printf("Numero de procesos \n");
 	scanf("%d",&num);
+	fl = fopen ("Prueba.txt", "w");
+	fprintf(fl, "3\n");
+	fprintf(fl, "5\n");
+	fprintf(fl, "9\n");
+	fclose(fl);
 	pid = procesos(num);
 
 	if(pid == 0){	
@@ -28,35 +33,30 @@ int main(){
 	wait(&status);
 	}
 	
-	fl = fopen ("Prueba.txt", "w");
-	fprintf(fl, "3\n");
-	fprintf(fl, "4\n");
-	fprintf(fl, "5\n");
-	fclose(fl);
 	printf("Soy el padre %d con pid%d \n", pid,getpid());
 	exit(0);
 
 	}else{
 	
 	fl = fopen ("Prueba.txt", "r");
-	//for(j = ((pid-1)*10); j <= 9+((pid-1)*10); j++){
-	for(j = (pid-1); j <= 10; j++){
-		while (!feof(fl)) {
+	//*
+	for(j = (pid); j <= 10; j++){
+	
+	while (!feof(fl)){
      fgets(str, 10, fl);
      if (!feof(fl)){        
-         i = atoi(str);
-        printf("numero %d\n", i);
-        }else if (j == i ){
-        	printf("Hola mundo\n");
-        }
-    }
-  }  
-		
+        i = atoi(str);	
+        //printf("Soy el hijo %d con pid%d %d\n", pid,getpid(),i);
+        if (i == j ){
+        		printf("Soy el hijo %d con pid%d %d Hola\n", pid,getpid(),i);
+        		}
+    		}
+    	}
+  	}  		
 }
 	fclose(fl);
-	printf("Soy el hijo %d con pid%d %d\n", pid,getpid(),i);
+	//printf("Soy el hijo %d con pid%d %d\n", pid,getpid(),i);
 	exit(0);
+
 	}
-
-
-
+//for(j = ((pid-1)*10); j <= 9+((pid-1)*10); j++){
